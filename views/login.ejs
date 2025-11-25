@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FixMate Login</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: "class" }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <link rel="stylesheet" href="../css/Login.css">
+</head>
+
+<body class="bg-white dark:bg-neutral-900 transition-colors duration-300">
+    <!-- Wrapper -->
+    <div class="login-wrapper flex items-center justify-center min-h-screen px-4">
+
+        <div class="login-card bg-white dark:bg-neutral-800 shadow-xl rounded-2xl p-8 w-full max-w-md transition-all">
+            <a href="home.html"><i class="fas fa-home"></i></a>
+            <!-- Logo -->
+            <div class="flex flex-col items-center mb-6">
+                <div
+                    class="w-14 h-14 bg-[#D08700] rounded-xl flex items-center justify-center text-black font-extrabold text-xl shadow-lg">
+                    FA
+                </div>
+                <h2 class="text-2xl font-bold mt-3 text-black dark:text-white">FixMate Login</h2>
+            </div>
+
+            <!-- Tabs -->
+            <div
+                class="tabs flex justify-between bg-neutral-100 dark:bg-neutral-700 rounded-xl p-1 text-sm font-semibold mb-6">
+                <button class="tab-btn active-tab" data-role="admin">Admin</button>
+                <button class="tab-btn" data-role="customer">Customer</button>
+                <button class="tab-btn" data-role="worker">Worker</button>
+            </div>
+
+            <!-- Admin Login -->
+            <form id="admin-form" class="login-form" method="POST" action="/admin/login">
+                <input type="email" placeholder="Emal" class="input-box" name="email" required>
+                <input type="password" placeholder="Password" class="input-box" name="password" required>
+                <button type="submit" class="submit-btn">Login as Admin</button>
+            </form>
+
+            <!-- Customer Login -->
+            <form id="customer-form" class="login-form hidden" action="/customer/login" method="POST">
+                <input type="email" name="email" placeholder="Email" required class="input-box">
+                <input type="password" name="password" placeholder="Password" required class="input-box">
+                <button type="submit" class="submit-btn">Login as Customer</button>
+
+                <p class="text-center mt-3 text-sm text-neutral-600 dark:text-neutral-300">
+                    Don’t have an account?
+                    <a href="/signup" class="text-[#D08700] hover:underline">Sign Up</a>
+                </p>
+            </form>
+
+
+            <!-- Worker Login -->
+            <form id="worker-form" class="login-form hidden" action="/worker/login" method="POST">
+                <input type="email" placeholder="email" class="input-box" name="email" required>
+                <input type="password" placeholder="Password" class="input-box" name="password" required>
+                <button type="submit" class="submit-btn">Login as Worker</button>
+            </form>
+
+        </div>
+    </div>
+
+    <script src="../js/login.js"></script>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('signup') === 'success') {
+            alert("Signup successful! Please login.");
+        }
+
+        
+        if (urlParams.get('signup') === 'exists') {
+            alert("Email already exists! Please login.");
+        }
+    </script>
+
+</body>
+
+</html>

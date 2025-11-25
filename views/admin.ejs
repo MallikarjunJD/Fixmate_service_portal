@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service Management Admin</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="bg-gray-100">
+
+  <!-- ✅ HEADER -->
+  <header class="w-full bg-black  text-white flex items-center justify-between px-6 py-4 shadow">
+    <div class="flex items-center gap-3">
+      <div class="logo-mark">FM</div>
+      <h1 class="text-xl font-semibold">FixMate Admin Panel</h1>
+    </div>
+
+
+   
+<div class="profile-menu-container" id="user">
+   <button class="text-yellow-600 px-4 py-2 hover:text-white-600 px-4 py-2" >
+     <i class="fa-regular fa-user"></i> 
+    </button>
+    <div class="profile-popup">
+        <ul>
+            <li>Change Name</li>
+            <li>Change Phone Number</li>
+            <li>Change Email</li>
+        </ul>
+    </div>
+  </div>
+    
+<!--<div class="profile-menu-container">
+    <button class="profile-btn">Profile ⚙</button>
+
+    <div class="profile-popup">
+        <ul>
+            <li>Change Name</li>
+            <li>Change Phone Number</li>
+            <li>Change Email</li>
+        </ul>
+    </div>
+</div>
+ -->
+
+
+
+
+     <a href="home.html" class="text-yellow-600 px-4 py-2 hover:text-white-600 px-4 py-2">
+     <i class="fa-regular fa-house"></i>
+     </a>
+  </header>
+
+  <!-- MAIN WRAPPER -->
+  <div class="flex">
+
+    <!--  SIDEBAR -->
+    <nav class="w-64 bg-white shadow h-screen p-5 space-y-2">
+      <button class="nav-btn w-full text-left px-4 py-2 rounded hover:bg-yellow-100"
+              onclick="showSection('dashboard')">
+              <i class="fa-solid fa-box"></i>
+        Dashboard
+      </button>
+
+      <button class="nav-btn w-full text-left px-4 py-2 rounded hover:bg-yellow-100"
+              onclick="showSection('requests')">
+             
+        <i class="fa-solid fa-bullhorn"></i>
+         Requests
+      </button>
+
+      <button class="nav-btn w-full text-left px-4 py-2 rounded hover:bg-yellow-100"
+              onclick="showSection('workers')">
+              <i class="fa-solid fa-people-group"></i>
+        Workers / Executives
+      </button>
+
+      <button class="nav-btn w-full text-left px-4 py-2 rounded hover:bg-yellow-100"
+              onclick="showSection('customers')">
+              <i class="fa-solid fa-person-circle-exclamation"></i>
+        Customers
+      </button>
+
+      <button class="nav-btn w-full text-left px-4 py-2 rounded hover:bg-yellow-100"
+              onclick="showSection('reports')">
+              <i class="fa-solid fa-chart-area"></i>
+        Reports & Analytics
+      </button>
+
+      <button class="nav-btn w-full text-left px-4 py-2 rounded hover:bg-yellow-100"
+              onclick="showSection('settings')">
+              <i class="fa-solid fa-gears"></i>
+        Settings
+      </button>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 p-8">
+
+      <!-- ======================================= -->
+      <!-- DASHBOARD SECTION WITH 5 CARDS          -->
+      <!-- ======================================= -->
+      <section id="dashboard" class="section">
+        <h2 class="text-2xl font-semibold mb-6">Good to see you again, Arjun kumar. Your Dashboard is ready.</h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+          <!--  Card 1: Requests -->
+          <div onclick="showSection('requests')" 
+            class="cursor-pointer bg-white p-6 rounded-xl shadow hover:bg-yellow-100 transition">
+            
+            <h3 class="text-xl font-semibold"><i class="fa-solid fa-bullhorn"></i>   Requests</h3>
+            <p class="text-gray-600">View & manage service requests</p>
+          </div>
+
+          <!--  card 2: Workers -->
+          <div onclick="showSection('workers')" 
+            class="cursor-pointer bg-white p-6 rounded-xl shadow hover:bg-yellow-100 transition">
+            <h3 class="text-xl font-semibold"><i class="fa-solid fa-people-group"></i>   Workers / Executives</h3>
+            <p class="text-gray-600">Manage field workers</p>
+          </div>
+
+          <!--  card 3: Customers -->
+          <div onclick="showSection('customers')" 
+            class="cursor-pointer bg-white p-6 rounded-xl shadow hover:bg-yellow-100 transition">
+            <h3 class="text-xl font-semibold"><i class="fa-solid fa-person-circle-exclamation"></i>    Customers</h3>
+            <p class="text-gray-600">View customer records</p>
+          </div>
+
+          <!--  card 4: Reports -->
+          <div onclick="showSection('reports')" 
+            class="cursor-pointer bg-white p-6 rounded-xl shadow hover:bg-yellow-100 transition">
+            <h3 class="text-xl font-semibold"> <i class="fa-solid fa-chart-area"></i>      Reports & Analytics</h3>
+            <p class="text-gray-600">Track statistics & graphs</p>
+          </div>
+
+          <!--  card 5: Settings -->
+          <div onclick="showSection('settings')" 
+            class="cursor-pointer bg-white p-6 rounded-xl shadow hover:bg-yellow-100 transition">
+            <h3 class="text-xl font-semibold"><i class="fa-solid fa-gears"></i>     Settings</h3>
+            <p class="text-gray-600">System configuration</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- EMPTY SECTIONS FOR NOW -->
+
+     <section id="requests" class="section hidden">
+  <h2 class="text-2xl font-semibold mb-6">Requests</h2>
+
+  <h3 class="text-lg font-semibold mb-2">Active Requests</h3>
+  <table class="requests-table">
+    <thead>
+      <tr>
+        <th>ID</th><th>Customer</th><th>Service</th><th>Priority</th><th>Status</th><th>Assigned To</th><th>Created</th><th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (activeRequests && activeRequests.length) { %>
+        <% activeRequests.forEach(r => { %>
+          <tr>
+            <td><%= r._id %></td>
+            <td><%= r.customerId ? r.customerId.name : r.customerName %></td>
+            <td><%= r.serviceName || r.serviceId %></td>
+            <td><%= r.priority %></td>
+            <td><span class="status <%= r.status.toLowerCase().replace(/\s/g,'-') %>"><%= r.status %></span></td>
+            <td>
+              <% if (r.acceptedBy) { %>
+                <%= r.acceptedBy.name || r.acceptedBy %>
+              <% } else { %>
+                <form method="POST" action="/admin/requests/assign" class="inline-form">
+                  <select name="workerId" required>
+                    <option value="">Assign</option>
+                    <% workers.forEach(w => { %>
+                      <option value="<%= w._id %>"><%= w.name %> — <%= w.primaryService %></option>
+                    <% }) %>
+                  </select>
+                  <input type="hidden" name="requestId" value="<%= r._id %>">
+                  <button type="submit" class="view-btn">Assign</button>
+                </form>
+              <% } %>
+            </td>
+            <td><%= new Date(r.createdAt).toLocaleString() %></td>
+            <td><a class="view-btn" href="/admin/requests/view/<%= r._id %>">View</a></td>
+          </tr>
+        <% }) %>
+      <% } else { %>
+        <tr><td colspan="8">No active requests</td></tr>
+      <% } %>
+    </tbody>
+  </table>
+
+  <h3 class="mt-8 text-lg font-semibold mb-2">SLA Breached requests</h3>
+  <table class="requests-table">
+    <thead>
+      <tr>
+        <th>ID</th><th>Customer</th><th>Service</th><th>Priority</th><th>Status</th><th>Assigned To</th><th>Created</th><th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (slaBreached && slaBreached.length) { %>
+        <% slaBreached.forEach(r => { %>
+          <tr>
+            <td><%= r._id %></td>
+            <td><%= r.customerId ? r.customerId.name : r.customerName %></td>
+            <td><%= r.serviceName || r.serviceId %></td>
+            <td><%= r.priority %></td>
+            <td><span class="status sla">SLA Breached</span></td>
+            <td><%= r.acceptedBy ? r.acceptedBy.name : "-" %></td>
+            <td><%= new Date(r.createdAt).toLocaleString() %></td>
+            <td><a class="view-btn" href="/admin/requests/view/<%= r._id %>">View</a></td>
+          </tr>
+        <% }) %>
+      <% } else { %>
+        <tr><td colspan="8">No SLA breached requests</td></tr>
+      <% } %>
+    </tbody>
+  </table>
+</section>
+
+
+      <section id="workers" class="section hidden">
+  <h2 class="text-2xl font-semibold mb-6">Workers / Executives</h2>
+
+  <div class="workers-grid">
+    <% if (workers && workers.length) { %>
+      <% workers.forEach(w => { %>
+        <div class="worker-card">
+          <div class="worker-icon">👷</div>
+          <h3><%= w.name %></h3>
+          <p><strong>Skill:</strong> <%= w.primaryService %></p>
+          <p><strong>Availability:</strong> <%= w.status %></p>
+          <p><strong>Area:</strong> <%= w.area || 'N/A' %></p>
+
+          <div class="mt-2">
+            <a class="view-btn" href="/admin/worker/edit/<%= w._id %>">Edit</a>
+
+            <form method="POST" action="/admin/worker/delete/<%= w._id %>" style="display:inline;">
+              <button type="submit" class="delete-btn">Delete</button>
+            </form>
+          </div>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <div>No workers found</div>
+    <% } %>
+
+    <!-- Create worker card (keeps your UI) -->
+    <div class="worker-card">
+      <h1><b><i class="fa-solid fa-user-plus"></i> Create a Worker profile</b></h1>
+      <a class="view-btn" href="/admin/worker/create">Create</a>
+    </div>
+  </div>
+</section>
+
+
+     <section id="customers" class="section hidden">
+  <h2 class="text-2xl font-semibold mb-6">Customers</h2>
+
+  <table class="requests-table">
+    <thead>
+      <tr><th>ID</th><th>Name</th><th>Email</th><th>Total Requests</th><th>Completed</th><th>Action</th></tr>
+    </thead>
+    <tbody>
+      <% if (customersWithCounts && customersWithCounts.length) { %>
+        <% customersWithCounts.forEach(item => { %>
+          <tr>
+            <td><%= item.customer._id %></td>
+            <td><%= item.customer.name %></td>
+            <td><%= item.customer.email %></td>
+            <td><%= item.total %></td>
+            <td><%= item.completed %></td>
+            <td><a class="view-btn" href="/admin/customer/<%= item.customer._id %>">View</a></td>
+          </tr>
+        <% }) %>
+      <% } else { %>
+        <tr><td colspan="6">No customers found</td></tr>
+      <% } %>
+    </tbody>
+  </table>
+</section>
+
+
+      <section id="reports" class="section hidden">
+        
+        
+
+    <h2 class="reports-title">Reports & Analytics</h2>
+
+    <!-- ======== ANALYTICS CARDS ======== -->
+    <div class="analytics-grid">
+
+        <div class="analytics-card">
+            <i class="fa-solid fa-comment-dots icon"></i>
+            <h3>Total Feedbacks</h3>
+            <p>124</p>
+        </div>
+
+        <div class="analytics-card">
+            <i class="fa-solid fa-triangle-exclamation icon"></i>
+            <h3>Issues Reported</h3>
+            <p>47</p>
+        </div>
+
+        <div class="analytics-card">
+            <i class="fa-solid fa-circle-check icon"></i>
+            <h3>Resolved</h3>
+            <p>38</p>
+        </div>
+
+        <div class="analytics-card">
+            <i class="fa-solid fa-clock icon"></i>
+            <h3>Pending Actions</h3>
+            <p>9</p>
+        </div>
+
+    </div>
+
+    <!-- ======== REPORT CARDS ======== -->
+    <div class="report-list">
+
+        <div class="report-card">
+            <i class="fa-solid fa-user-pen report-icon"></i>
+            <div class="report-content">
+                <h3>User Feedback</h3>
+                <p>“The service was slow yesterday evening.”</p>
+                <span class="status pending">Pending Review</span>
+            </div>
+        </div>
+
+        <div class="report-card">
+            <i class="fa-solid fa-list-check report-icon"></i>
+            <div class="report-content">
+                <h3>Change Request</h3>
+                <p>“Please add a category for Electricians.”</p>
+                <span class="status in-progress">In Progress</span>
+            </div>
+        </div>
+
+        <div class="report-card">
+            <i class="fa-solid fa-bug report-icon"></i>
+            <div class="report-content">
+                <h3>Issue Reported</h3>
+                <p>“Customer request form not submitting.”</p>
+                <span class="status resolved">Resolved</span>
+            </div>
+        </div>
+
+        <div class="report-card">
+            <i class="fa-solid fa-gear report-icon"></i>
+            <div class="report-content">
+                <h3>Action Required</h3>
+                <p>“Update worker database for December.”</p>
+                <span class="status pending">Pending</span>
+            </div>
+        </div>
+
+    </div>
+
+
+      </section>
+
+      <section id="settings" class="section hidden">
+        <h2 class="text-2xl font-semibold mb-6">Settings</h2>
+        
+    
+    
+
+    <!-- Theme Setting -->
+    <div class="setting-item">
+        <label>Dark Mode</label>
+        <label class="switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider round"></span>
+        </label>
+    </div>
+
+    <!-- Notification Settings -->
+    <div class="setting-item">
+        <label>Email Notifications</label>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+        </label>
+    </div>
+
+    <div class="setting-item">
+        <label>Customer Request Alerts</label>
+        <label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider round"></span>
+        </label>
+    </div>
+
+    <!-- System Controls -->
+    <div class="setting-item">
+        <label>Auto-Assign Workers</label>
+        <label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider round"></span>
+        </label>
+    </div>
+
+    <div class="setting-item">
+        <label>Maintenance Mode</label>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+        </label>
+    </div>
+
+    <!-- Quick Actions -->
+    <h3 class="section-title">Quick Actions</h3>
+
+    <div class="quick-actions">
+        <button class="action-btn">Clear Logs</button>
+        <button class="action-btn">Reset Dummy Data</button>
+        <button class="action-btn">Export Data</button>
+    </div>
+
+
+      </section>
+
+    </main>
+  </div>
+  <script src="../js/admin.js"></script>
+</body>
+</html>

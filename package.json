@@ -1,0 +1,28 @@
+{
+  "name": "fixmate_service_portal",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/MallikarjunJD/FixMate#readme",
+  "bugs": {
+    "url": "https://github.com/MallikarjunJD/FixMate/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MallikarjunJD/FixMate.git"
+  },
+  "license": "ISC",
+  "author": "Mallikarjun",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.2.3",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "mongoose": "^9.0.0"
+  }
+}

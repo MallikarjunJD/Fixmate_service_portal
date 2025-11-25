@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FixMate — Worker Panel</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="/css/worker.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body class="bg-gray-100">
+  <!-- HEADER -->
+  <header class="w-full bg-black text-white flex items-center justify-between px-6 py-4 shadow">
+    <div class="flex items-center gap-3">
+      <div class="logo-mark">FM</div>
+      <h1 class="text-xl font-semibold">FixMate Worker Panel</h1>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <!-- Status Toggle -->
+      <div class="ml-4 flex items-center">
+        <label class="switch">
+          <input type="checkbox" id="availabilityToggle" <%= worker.isAvailable ? 'checked' : '' %> />
+          <span class="slider round"></span>
+        </label>
+        <span id="status-label" class="ml-2 text-sm"><%= worker.isAvailable ? 'Available' : 'Busy' %></span>
+      </div>
+
+      <!-- Profile popup -->
+      <div class="profile-menu-container">
+        <button class="text-yellow-600 px-4 py-2 hover:text-white">
+          <i class="fa-regular fa-user"></i>
+        </button>
+        <div class="profile-popup">
+          <ul>
+            <li onclick="showSection('profile')">Profile</li>
+            <li onclick="logoutWorker()">Logout</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Home Button -->
+      <button class="text-yellow-600 px-4 py-2 hover:text-white" onclick="showSection('active-request')">
+        <i class="fas fa-home"></i>
+      </button>
+    </div>
+  </header>
+
+  <div class="flex">
+    <!-- SIDEBAR -->
+    <nav class="w-64 bg-white shadow h-screen p-5 space-y-2">
+      <button class="nav-btn active-nav w-full text-left px-4 py-2 rounded hover:bg-yellow-100" onclick="showSection('active-request')">
+        <i class="fa-solid fa-bolt"></i> Active Request
+      </button>
+
+      <button class="nav-btn w-full text-left px-4 py-2 rounded hover:bg-yellow-100" onclick="showSection('requests')">
+        <i class="fa-solid fa-list"></i> Requests
+      </button>
+
+      <button class="nav-btn w-full text-left px-4 py-2 rounded hover:bg-yellow-100" onclick="showSection('profile')">
+        <i class="fa-solid fa-user"></i> Profile
+      </button>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 p-8">
+      <!-- ACTIVE REQUEST -->
+      <section id="active-request" class="section">
+        <h2 class="text-2xl font-semibold mb-4">Active Request</h2>
+
+        <% if(activeRequest){ %>
+          <div class="bg-white p-6 rounded-xl shadow space-y-3">
+            <h3 class="text-xl font-bold"><%= activeRequest.serviceName %></h3>
+            <p><strong>Customer:</strong> <%= activeRequest.customerName %></p>
+            <p><strong>Phone:</strong> <%= activeRequest.customerPhone %></p>
+            <p><strong>Location:</strong> <%= activeRequest.location %></p>
+            <p><strong>Priority:</strong> <%= activeRequest.priority %></p>
+            <p><strong>Time Left:</strong> <span id="countdown-timer">--:--</span></p>
+
+            <form method="POST" action="/worker/request/complete/<%= activeRequest._id %>">
+              <button class="bg-green-600 text-white px-5 py-2 rounded-lg hover:bg-green-700 w-full mt-3">
+                Mark Completed
+              </button>
+            </form>
+          </div>
+        <% } else { %>
+          <p class="text-gray-500">No active request.</p>
+        <% } %>
+      </section>
+
+      <!-- REQUEST LIST -->
+      <section id="requests" class="section hidden">
+        <h2 class="text-2xl font-semibold mb-4">Available Requests</h2>
+
+        <% if(request.length === 0){ %>
+          <p class="text-gray-500">No available requests.</p>
+        <% } %>
+
+        <div class="space-y-4">
+          <% requests.forEach(r => { %>
+            <div class="bg-white p-5 rounded-xl shadow">
+              <h3 class="text-lg font-bold"><%= r.serviceName %></h3>
+              <p><strong>Customer:</strong> <%= r.customerName %></p>
+              <p><strong>Location:</strong> <%= r.location %></p>
+              <p><strong>Priority:</strong> <%= r.priority %></p>
+
+              <form method="POST" action="/worker/request/accept/<%= r._id %>" class="mt-3">
+                <button class="bg-yellow-600 text-white px-5 py-2 rounded-lg hover:bg-yellow-700 w-full">
+                  Accept Request
+                </button>
+              </form>
+            </div>
+          <% }) %>
+        </div>
+      </section>
+
+      <!-- PROFILE -->
+      <section id="profile" class="section hidden">
+        <h2 class="text-2xl font-semibold mb-4">Worker Profile</h2>
+
+        <div class="bg-white p-6 rounded-xl shadow max-w-md space-y-2">
+          <p><strong>Name:</strong> <%= worker.name %></p>
+          <p><strong>Phone:</strong> <%= worker.phone %></p>
+          <p><strong>Email:</strong> <%= worker.email %></p>
+          <p><strong>Status:</strong> <%= worker.isAvailable ? 'Available' : 'Busy' %></p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/js/worker.js"></script>
+</body>
+</html>

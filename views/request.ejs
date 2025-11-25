@@ -1,60 +1,99 @@
-<!-- book.ejs : Combined Full Booking + Quick Request Page -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Book Service</title>
-  <link rel="stylesheet" href="/styles.css" />
+    <meta charset="UTF-8">
+    <title>Request — <%= service.name %></title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="/css/request.css">
 </head>
-<body>
-  <div class="container">
-    <h2>Request for <%= service %></h2>
 
-    <% if (type === 'full') { %>
-      <!-- Full Booking Form -->
-      <form action="/book-service" method="POST" enctype="multipart/form-data" class="form-box">
-        <input type="hidden" name="service" value="<%= service %>" />
+<body class="backgo">
 
-        <label>Name</label>
-        <input type="text" name="name" required>
+<header class="bg-black text-white px-6 py-4 flex justify-between items-center shadow">
+    <div class="logo-mark">FM</div>
+    <h1 class="text-xl font-semibold">FixMate Book — <%= service.name %></h1>
+    <button onclick="window.history.back()" class="text-yellow-500 hover:text-white text-lg">← Back</button>
+</header>
 
-        <label>Phone</label>
-        <input type="text" name="phone" required>
+<main class="max-w-4xl mx-auto p-8">
 
-        <label>Email</label>
-        <input type="email" name="email">
+    <!-- SERVICE DETAILS BOX -->
+    <section class="bg-white shadow p-6 rounded-xl mb-8">
+        <h2 class="text-2xl font-bold mb-2"><%= service.name %></h2>
+        <p class="text-gray-600"><%= service.description %></p>
+    </section>
 
-        <label>Address</label>
-        <textarea name="address"></textarea>
+    <!-- REQUEST FORM -->
+    <form action="/request/create" method="POST" class="space-y-6 bg-white p-6 rounded-xl shadow">
 
-        <label>Preferred Date & Time</label>
-        <input type="datetime-local" name="datetime">
+        <!-- Hidden service ID -->
+        <input type="hidden" name="serviceId" value="<%= service.id %>">
+        <input type="hidden" name="serviceName" value="<%= service.name %>">
+        <!-- USER INFO -->
+        <h3 class="text-xl font-semibold mb-3">Your Information</h3>
 
-        <label>Description (Optional)</label>
-        <textarea name="description"></textarea>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <label class="block text-gray-700">Name</label>
+                <input type="text" name="customerName" value="<%= user.name %>"
+                       class="w-full border p-3 rounded-lg bg-gray-100" readonly>
+            </div>
 
-        <label>Upload Image (Optional)</label>
-        <input type="file" name="image">
+            <div>
+                <label class="block text-gray-700">Phone</label>
+                <input type="text" name="customerPhone" value="<%= user.phone %>"
+                       class="w-full border p-3 rounded-lg bg-gray-100" readonly>
+            </div>
 
-        <button type="submit">Submit Booking</button>
-      </form>
+            <div>
+                <label class="block text-gray-700">Email</label>
+                <input type="email" name="customerEmail" value="<%= user.email %>"
+                       class="w-full border p-3 rounded-lg bg-gray-100" readonly>
+            </div>
+        </div>
 
-    <% } else { %>
-      <!-- Quick Request Form -->
-      <form action="/quick-request" method="POST" class="form-box">
-        <input type="hidden" name="service" value="<%= service %>" />
+        <!-- PRIORITY -->
+        <h3 class="text-xl font-semibold mb-1">Select Priority</h3>
+        <p class="text-gray-500">Higher priority → faster service → higher price</p>
 
-        <label>Phone</label>
-        <input type="text" name="phone" required>
+        <select id="prioritySelect" name="priority"
+                class="w-full p-3 border rounded-lg mt-2">
+            <option value="Most Urgent">Most Urgent (1 Hr)</option>
+            <option value="Urgent">Urgent (3 Hr)</option>
+            <option value="Less Urgent">Less Urgent (12 Hr)</option>
+            <option value="Not Urgent">Not Urgent (24 Hr)</option>
+        </select>
 
-        <label>Short Note (Optional)</label>
-        <textarea name="note"></textarea>
+        <!-- PRICE PREVIEW -->
+        <div class="bg-yellow-100 p-4 rounded-lg mt-3 text-lg font-semibold">
+            Price: ₹<span id="priceDisplay"><%= service.pricing.mostUrgent %></span>
+        </div>
+        <input type="hidden" id="priceInput" name="price" value="<%= service.pricing.mostUrgent %>">
+        <!-- ADDRESS -->
+        <h3 class="text-xl font-semibold mt-6">Service Address</h3>
 
-        <button type="submit">Send Quick Request</button>
-      </form>
-    <% } %>
+        <textarea name="location" rows="4" required type="text"
+                  class="w-full border p-3 rounded-lg"
+                  placeholder="Enter your address"></textarea>
 
-  </div>
+        <button type="submit"
+                class="w-full bg-yellow-600 hover:bg-yellow-700 text-white py-4 mt-4 text-lg rounded-xl">
+            Confirm & Create Request
+        </button>
+    </form>
+
+</main>
+
+<!-- PRICE CHANGE SCRIPT -->
+<script>
+    const pricing = JSON.parse(JSON.stringify(service.pricing));
+    const select = document.getElementById("prioritySelect");
+    const display = document.getElementById("priceDisplay");
+
+    select.addEventListener("change", () => {
+        display.textContent = pricing[select.value];
+    });
+</script>
+
 </body>
 </html>

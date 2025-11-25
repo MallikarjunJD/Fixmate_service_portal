@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FixMate - Create Account</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: "class" }
+    </script>
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        />
+
+    <link rel="stylesheet" href="../css/signup.css">
+</head>
+
+<body class="bg-white dark:bg-neutral-900 transition-colors duration-300">
+    
+    <div class="signup-wrapper flex items-center justify-center min-h-screen px-4">
+
+        <div class="signup-card bg-white dark:bg-neutral-800 shadow-xl rounded-2xl p-8 w-full max-w-lg transition-all">
+            <a href="home.html"><i class="fas fa-home"></i></a>
+            <!-- Logo section -->
+            <div class="flex flex-col items-center mb-6">
+                <div class="w-14 h-14 bg-[#D08700] rounded-xl flex items-center justify-center text-black font-extrabold text-xl shadow-lg">
+                    FM
+                </div>
+                <h2 class="text-2xl font-bold mt-3 text-black dark:text-white">Create Customer Account</h2>
+            </div>
+
+            <!-- Signup Form -->
+            <form id="signup-form" class="signup-form" action="/customer/signup" method="POST">
+
+                <input type="text" placeholder="Full Name" class="input-box" name="name" required>
+                <input type="email" placeholder="Email" class="input-box" name="email" required>
+                <input type="tel" placeholder="Phone Number" class="input-box" name="phone" required>
+                <input type="password" placeholder="Password" class="input-box" name="password" required>
+                <input type="password" placeholder="Confirm Password" class="input-box" name= "confpass" required>
+
+                <textarea placeholder="Address (optional)" class="input-box resize-none h-24" name="address"></textarea>
+
+                <button type="submit" class="submit-btn">Create Account</button>
+
+                <p class="text-center mt-4 text-sm text-neutral-600 dark:text-neutral-300">
+                    Already have an account?
+                    <a href="login.html" class="text-[#D08700] hover:underline">Login here</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/signup.js"></script>
+    <script>
+          const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('q') === 'password_mismatch') {
+            alert("Password mismatch please check passwords.");
+        }
+
+        
+
+    </script>
+</body>
+</html>

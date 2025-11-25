@@ -1,0 +1,30 @@
+<form action="/api/request/book" method="POST">
+
+  <!-- Hidden values -->
+  <input type="hidden" name="serviceId" value="<%= service.id %>">
+  <input type="hidden" name="serviceName" value="<%= service.name %>">
+  <input type="hidden" name="customerId" value="<%= user.id %>">
+  <input type="hidden" name="customerName" value="<%= user.name %>">
+  <input type="hidden" name="customerPhone" value="<%= user.phone %>">
+
+  <!-- User fills only what's needed -->
+  <label>Your Location</label>
+  <input name="location" required>
+
+  <label>Priority</label>
+  <select name="priority">
+    <option>Most Urgent</option>
+    <option>Urgent</option>
+    <option>Less Urgent</option>
+    <option>Not Urgent</option>
+  </select>
+
+  <label>Payment Method</label>
+  <select name="paymentMethod">
+    <option>Cash</option>
+    <option>Online</option>
+  </select>
+
+  <button>Confirm Booking</button>
+
+</form>

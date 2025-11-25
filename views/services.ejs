@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FixMate — Services</title>
+
+  <link rel="stylesheet" href="/css/services.css" />
+</head>
+
+<body>
+
+<header>
+  <div class="logo-mark">FM</div>
+  <h1>FixMate — Services</h1>
+</header>
+
+<div class="container">
+
+  <!-- toolbar -->
+  <div class="toolbar">
+    <div class="search">
+      <input id="q" placeholder="Search services (name or description)..." />
+    </div>
+    <div class="filters">
+      <select id="sort">
+        <option value="name">Sort: Name</option>
+        <option value="priceAsc">Sort: Min Price ↑</option>
+        <option value="priceDesc">Sort: Max Price ↓</option>
+      </select>
+      <button class="btn" id="reset">Reset</button>
+    </div>
+  </div>
+
+  <!-- CARDS GRID -->
+  <main id="list" class="grid">
+
+    <% services.forEach(s => { %>
+      <div class="card"
+           data-service='<%- JSON.stringify(s) %>'>
+
+        <div class="thumb">
+          <img src="/assets/services/<%= s.images[0] %>"
+               alt="<%= s.name %>"
+               onerror="this.src='/assets/fallback.jpg'">
+        </div>
+
+        <div class="title"><%= s.name %></div>
+        <div class="desc"><%= s.description.substring(0, 70) %>...</div>
+
+        <a href="/services/<%= s.id %>"
+           class="btn"
+           style="text-align:center;margin-top:6px;">
+          View
+        </a>
+
+      </div>
+    <% }) %>
+
+  </main>
+
+</div>
+
+<!-- MODAL -->
+<div id="modalBackdrop" class="modal-backdrop">
+  <div class="modal">
+    <div class="modal-header">
+      <strong id="modalTitle"></strong>
+      <button id="closeModal" class="close-btn">✕</button>
+    </div>
+
+    <div class="modal-body">
+      <div>
+        <div id="gallery" class="gallery">
+          <img src="" alt="">
+        </div>
+        <div id="thumbs" style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap"></div>
+      </div>
+
+      <aside style="padding:6px 8px">
+        <div class="meta">
+          <div id="modalDescription" class="desc"></div>
+
+          <div>
+            <h4 style="margin:0 0 6px 0">Pricing</h4>
+            <div id="modalPricing" class="price-row"></div>
+          </div>
+
+          <a id="bookBtn" class="btn">Book / Create Request</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<footer>Click any service card to see details. All images must be inside /public/assets/services/</footer>
+
+<script src="/js/services.js"> window.originalServices = JSON.parse(JSON.stringify(services));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,192 @@
+{
+  "services": [
+    {
+      "id": "electrician",
+      "name": "Electrician",
+      "description": "Certified electricians for wiring, repairs, installations, and emergencies. Safe, professional, and fast service.",
+      "images": [
+        "/images/electrician1.jpg",
+        "/images/electrician2.jpg",
+        "/images/electrician3.jpg"
+      ],
+      "pricing": {
+        "mostUrgent": 499,
+        "urgent": 399,
+        "lessUrgent": 299,
+        "notUrgent": 199
+      },
+      "feedbacks": [
+        { "name": "Rahul", "rating": 5, "comment": "Very quick and professional!" },
+        { "name": "Sanjay", "rating": 4, "comment": "Affordable and clean work." }
+      ]
+    },
+
+    {
+      "id": "plumber",
+      "name": "Plumber",
+      "description": "Expert plumbers for leakage, pipe repair, bathroom fittings, and emergency fixes.",
+      "images": [
+        "/images/plumber1.jpg",
+        "/images/plumber2.jpg",
+        "/images/plumber3.jpg"
+      ],
+      "pricing": {
+        "mostUrgent": 599,
+        "urgent": 449,
+        "lessUrgent": 349,
+        "notUrgent": 249
+      },
+      "feedbacks": [
+        { "name": "Aravind", "rating": 5, "comment": "Leak fixed in 20 minutes!" },
+        { "name": "Mahesh", "rating": 4, "comment": "Good service and friendly." }
+      ]
+    },
+
+    {
+      "id": "painting",
+      "name": "Wall Painting",
+      "description": "Professional painting with premium paint brands. Interior, exterior, and texture painting available.",
+      "images": [
+        "/images/painting1.jpg",
+        "/images/painting2.jpg",
+        "/images/painting3.jpg"
+      ],
+      "pricing": {
+        "mostUrgent": 1499,
+        "urgent": 1199,
+        "lessUrgent": 999,
+        "notUrgent": 799
+      },
+      "feedbacks": [
+        { "name": "Suma", "rating": 5, "comment": "Beautiful finish!" },
+        { "name": "Teja", "rating": 4, "comment": "Neat and professional work." }
+      ]
+    },
+
+    {
+      "id": "carpentry",
+      "name": "Carpentry",
+      "description": "Skilled carpenters for furniture repair, installation, and custom woodwork.",
+      "images": [
+        "/images/carpenter1.jpg",
+        "/images/carpenter2.jpg",
+        "/images/carpenter3.jpg"
+      ],
+      "pricing": {
+        "mostUrgent": 699,
+        "urgent": 549,
+        "lessUrgent": 449,
+        "notUrgent": 349
+      },
+      "feedbacks": [
+        { "name": "Lokesh", "rating": 5, "comment": "Fixed my wardrobe perfectly." },
+        { "name": "Rahul", "rating": 4, "comment": "Good craftsmanship." }
+      ]
+    },
+
+    {
+      "id": "appliance-repair",
+      "name": "Appliance Repair",
+      "description": "Repair service for washing machines, refrigerators, ovens, and all home appliances.",
+      "images": [
+        "/images/appliance1.jpg",
+        "/images/appliance2.jpg",
+        "/images/appliance3.jpg"
+      ],
+      "pricing": {
+        "mostUrgent": 799,
+        "urgent": 649,
+        "lessUrgent": 549,
+        "notUrgent": 449
+      },
+      "feedbacks": [
+        { "name": "Rohan", "rating": 5, "comment": "My fridge works like new!" },
+        { "name": "Shiva", "rating": 4, "comment": "Quick diagnosis." }
+      ]
+    },
+
+    {
+      "id": "pest-control",
+      "name": "Pest Control",
+      "description": "Odorless and effective pest control for cockroaches, termites, ants, and mosquitoes.",
+      "images": [
+        "/images/pest1.jpg",
+        "/images/pest2.jpg",
+        "/images/pest3.jpg"
+      ],
+      "pricing": {
+        "mostUrgent": 999,
+        "urgent": 799,
+        "lessUrgent": 699,
+        "notUrgent": 599
+      },
+      "feedbacks": [
+        { "name": "Ritu", "rating": 5, "comment": "Very effective treatment!" },
+        { "name": "Gopal", "rating": 4, "comment": "Service was good." }
+      ]
+    },
+
+    {
+      "id": "cleaning",
+      "name": "Home Cleaning",
+      "description": "Full home deep cleaning with professional-grade equipment and chemicals.",
+      "images": [
+        "/images/cleaning1.jpg",
+        "/images/cleaning2.jpg",
+        "/images/cleaning3.jpg"
+      ],
+      "pricing": {
+        "mostUrgent": 2499,
+        "urgent": 1999,
+        "lessUrgent": 1499,
+        "notUrgent": 999
+      },
+      "feedbacks": [
+        { "name": "Tejaswi", "rating": 5, "comment": "House looks brand new!" },
+        { "name": "Imran", "rating": 4, "comment": "Good cleaning." }
+      ]
+    },
+
+    {
+      "id": "ac-repair",
+      "name": "AC Repair & Service",
+      "description": "AC gas refill, repair, general service, installation & uninstallation.",
+      "images": [
+        "/images/ac1.jpg",
+        "/images/ac2.jpg",
+        "/images/ac3.jpg"
+      ],
+      "pricing": {
+        "mostUrgent": 1499,
+        "urgent": 1199,
+        "lessUrgent": 999,
+        "notUrgent": 799
+      },
+      "feedbacks": [
+        { "name": "Neeraj", "rating": 5, "comment": "AC cooling improved instantly!" },
+        { "name": "Vamsi", "rating": 4, "comment": "Quick service." }
+      ]
+    },
+
+    {
+      "id": "sofa-cleaning",
+      "name": "Sofa Cleaning",
+      "description": "Deep shampooing and vacuum cleaning for all fabric and leather sofas.",
+      "images": [
+        "/images/sofa1.jpg",
+        "/images/sofa2.jpg",
+        "/images/sofa3.jpg"
+      ],
+      "pricing": {
+        "mostUrgent": 1199,
+        "urgent": 999,
+        "lessUrgent": 799,
+        "notUrgent": 699
+      },
+      "feedbacks": [
+        { "name": "Aditi", "rating": 5, "comment": "My sofa looks brand new!" },
+        { "name": "Jayanth", "rating": 4, "comment": "Good service." }
+      ]
+    }
+  ]
+}

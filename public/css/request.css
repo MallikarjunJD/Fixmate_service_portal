@@ -1,0 +1,17 @@
+.backgo {
+    background-color: rgb(217, 209, 198);
+}
+
+.logo-mark{
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  border-radius:8px;
+  background:var(--brand);
+  color:white;
+  font-weight:700;
+  font-size:16px;
+  background-color: rgb(208, 135, 0)
+}
+

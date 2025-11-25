@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= service.name %> — FixMate</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="/css/service.css">
+
+    
+</head>
+
+<body class="bg-gray-200" >
+
+<header class="w-full bg-black text-white px-6 py-4 flex justify-between items-center shadow">
+        <div class="logo-mark">FM</div>
+    <h1 class="text-xl font-semibold" id="fixmate-hader"> FixMate — <%= service.name %></h1>
+
+    <button onclick="window.history.back()" class="text-yellow-600 hover:text-white text-lg">
+        <i class="fa-solid fa-arrow-left"></i> Back
+    </button>
+</header>
+
+<main class="p-8 max-w-7xl mx-auto">
+
+    <!-- INTRO -->
+    <section class="bg-white p-8 rounded-xl shadow mb-8">
+        <h2 class="text-3xl font-semibold mb-4"><%= service.name %></h2>
+        <p class="text-gray-700 text-lg leading-relaxed"><%= service.description %></p>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="bg-white p-8 rounded-xl shadow mb-8">
+        <h3 class="text-2xl font-semibold mb-4">Gallery</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <% service.images.forEach(img => { %>
+                <img src="<%= img %>" class="rounded-lg shadow hover:scale-105 transition">
+            <% }) %>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="bg-white p-8 rounded-xl shadow mb-8">
+        <h3 class="text-2xl font-semibold mb-4">Pricing</h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="p-6 border rounded-xl shadow">
+                <h4 class="text-lg font-semibold">Most Urgent (1 Hr)</h4>
+                <p class="text-green-700 text-2xl font-bold">₹<%= service.pricing.mostUrgent %></p>
+            </div>
+
+            <div class="p-6 border rounded-xl shadow">
+                <h4 class="text-lg font-semibold">Urgent (3 Hr)</h4>
+                <p class="text-green-700 text-2xl font-bold">₹<%= service.pricing.urgent %></p>
+            </div>
+
+            <div class="p-6 border rounded-xl shadow">
+                <h4 class="text-lg font-semibold">Less Urgent (12 Hr)</h4>
+                <p class="text-green-700 text-2xl font-bold">₹<%= service.pricing.lessUrgent %></p>
+            </div>
+
+            <div class="p-6 border rounded-xl shadow">
+                <h4 class="text-lg font-semibold">Not Urgent (24 Hr)</h4>
+                <p class="text-green-700 text-2xl font-bold">₹<%= service.pricing.notUrgent %></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEEDBACK -->
+    <section class="bg-white p-8 rounded-xl shadow mb-8">
+        <h3 class="text-2xl font-semibold mb-4">Customer Feedback</h3>
+
+        <% service.feedbacks.forEach(f => { %>
+            <div class="border-b pb-4 mb-4">
+                <p class="font-semibold text-lg"><%= f.name %></p>
+                <p class="text-yellow-500">
+                    <% for (let i=0; i<f.rating; i++){ %> ★ <% } %>
+                </p>
+                <p class="text-gray-600"><%= f.comment %></p>
+            </div>
+        <% }) %>
+    </section>
+
+    <!-- BOOK NOW -->
+    <div class="text-center mt-10">
+        <a href="/book/<%= service.id %>"
+           class="px-8 py-4 bg-yellow-600 text-white text-lg rounded-xl shadow hover:bg-yellow-700 book-btn">
+            Book This Service Now
+        </a>
+    </div>
+    
+    
+
+
+
+
+
+</main>
+
+</body>
+</html>
